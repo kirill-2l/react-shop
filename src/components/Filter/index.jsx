@@ -1,51 +1,44 @@
-import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
-import PropTypes from 'prop-types'
+import React from "react";
+import { Menu, Input } from "semantic-ui-react";
+// import PropTypes from "prop-types";
 
-
-class Filter extends Component {
-  state = { activeItem: 'All' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <Menu secondary>
-        <Menu.Item
-          name='All'
-          active={activeItem === 'All'}
-          onClick={this.handleItemClick}
-        >Все
-        </Menu.Item>
-        <Menu.Item
-          name='Popular'
-          active={activeItem === 'Popular'}
-          onClick={this.handleItemClick}
-        >Популярые
-        </Menu.Item>
-        <Menu.Item
-          name='Price_high'
-          active={activeItem === 'Price_high'}
-          onClick={this.handleItemClick}
-        >Цена (дешевые)
-        </Menu.Item>
-        <Menu.Item
-          name='Price_low'
-          active={activeItem === 'Price_low'}
-          onClick={this.handleItemClick}
-        >Цена (дорогие)
-        </Menu.Item>
-        <Menu.Item
-          name='Author'
-          active={activeItem === 'Author'}
-          onClick={this.handleItemClick}
-        >Автор
-        </Menu.Item>
-      </Menu>
-    )
-  }
-}
+const Filter = ({ setFilter, filterBy, searchQuery, setSearchQuery }) => {
+  return (
+    <Menu secondary>
+      <Menu.Item
+        active={filterBy === "all"}
+        onClick={setFilter.bind(this, "all")}
+      >
+        Все
+      </Menu.Item>
+      <Menu.Item
+        active={filterBy === "price_high"}
+        onClick={setFilter.bind(this, "price_high")}
+      >
+        Цена (дешевые)
+      </Menu.Item>
+      <Menu.Item
+        active={filterBy === "price_low"}
+        onClick={setFilter.bind(this, "price_low")}
+      >
+        Цена (дорогие)
+      </Menu.Item>
+      <Menu.Item
+        active={filterBy === "author"}
+        onClick={setFilter.bind(this, "author")}
+      >
+        Автор
+      </Menu.Item>
+      <Menu.Item>
+        <Input
+          icon="search"
+          onChange={e => setSearchQuery(e.target.value)}
+          value={searchQuery}
+          placeholder="Введите запрос..."
+        />
+      </Menu.Item>
+    </Menu>
+  );
+};
 
 export default Filter;

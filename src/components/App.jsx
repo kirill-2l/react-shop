@@ -4,11 +4,11 @@ import axios from "axios";
 
 import Menu from "./Menu";
 import BookCard from "./BookCard";
-import Filter from "./Filter";
+import Filter from "../containers/Filter";
 import { Container } from "semantic-ui-react";
 import { Card } from "semantic-ui-react";
 
-const App = ({ books, isReady, setBooks }) => {
+const App = ({ books, isReady, setBooks, setFilter }) => {
   useEffect(() => {
     axios.get("/books.json").then(({ data }) => setBooks(data));
   }, []);
