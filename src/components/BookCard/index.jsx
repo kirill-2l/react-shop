@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
+import { Card, Icon, Image, Button } from "semantic-ui-react";
 
-const BookCard = ({ title, author, price, image }) => {
+const BookCard = ({ title, author, price, image, addToCart }) => {
   return (
     <Card>
       <Image src={image} wrapped ui={false} />
@@ -17,6 +17,7 @@ const BookCard = ({ title, author, price, image }) => {
           {price}
         </span>
       </Card.Content>
+      <Button onClick={addToCart}>Добавить в корзину</Button>
     </Card>
   );
 };

@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 
 import axios from "axios";
 
-import Menu from "./Menu";
-import BookCard from "./BookCard";
+import Menu from "../containers/Menu";
+import BookCard from "../containers/BookCard";
 import Filter from "../containers/Filter";
 import { Container } from "semantic-ui-react";
 import { Card } from "semantic-ui-react";
